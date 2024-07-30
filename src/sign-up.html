@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Create Account</title>
+    <title>Sign-Up Page</title>
 </head>
 <body>
-    <div style="text-align:center">
-        <img src="user.jpg" alt="User" style="width:200px;height:200px;"><br><br>
-        <label for="" style="font-size:30px;"><b>Sign-up</b></label><br><br>
-
-        <input type="text" placeholder="Email" required><br><br>
-        <input type="password" placeholder="Set password" required><br><br>
-
-        <input type="password" placeholder="Confirm password" required><br><br>
-
-        <label for="">Role : </label>
-        <select name="" id="">
-            <option value="">User</option>
-            <option value="">Admin</option>
-            <option value="">Cook</option>
-        </select><br><br>
-        <a href="homepage.html"><input type="submit" value="Sign-up"></a>
-    </div>
+    <form action="">
+        <div style="text-align:center">
+            <img src="user.jpg" alt="User" style="width:200px;height:200px;"><br><br>
+            <label for="" style="font-size:30px;"><b>Sign-Up</b></label><br><br>
+            <label for="">First Name : </label>
+            <input type="text" required><br><br>
+            <label for="">Last Name : </label>
+            <input type="text" required><br><br>
+            <label for="">Address : </label>
+            <textarea required></textarea><br><br>
+            <label for="">Gender : </label><br><br>
+            <input type="radio" name="gen">Male<br><br>
+            <input type="radio" name="gen">Female<br><br>
+            <input type="radio" name="gen">Other<br><br>
+            <label for="">Date of Birth : </label>
+            <input type="date" required><br><br>
+            <label for="">Probable meal type : </label><br><br>
+            <input type="checkbox" name="break">Breakfast<br><br>
+            <input type="checkbox" name="lunch">Lunch<br><br>
+            <input type="checkbox" name="dinner">Dinner<br><br>
+            <label for="preferredDelivery">Preferred Delivery Date & Time:</label>
+            <input type="datetime-local" required><br><br>
+            <label for="numberOfMeals">Number of Meals you wish to order:</label>
+            <input type="number" min="1" required><br><br>  
+            <label for="">Profile Photo : </label>
+            <input type="file" required><br><br>
+            <label for="">Email : </label>
+            <input type="text" required><br><br>
+            <label for="">Username : </label>
+            <input type="text" required><br><br>
+            <label for="">Set Password : </label>
+            <input type="password" required><br><br>
+            <label for="">Confirm Password : </label>
+            <input type="password" required><br><br>
+            <label for="">Role : </label>
+            <select required>
+                <option value="">----</option>
+                <option value="">User</option>
+                <option value="">Admin</option>
+                <option value="">Cook</option>
+            </select><br><br>
+            <label for="">Favourite color for tiffin box : </label>
+            <input type="color" required><br><br>
+            <label for="">Url of Social Media Profile:</label>
+            <input type="url" required ><br><br>
+            <label for="">Rate our website design (1-10):</label>
+            <input type="range" min="1" max="10" required><br><br>
+            <label for="">Search for Meal Options:</label>
+            <input type="search"><br><br>
+            <label for="">Preferred Delivery Time:</label>
+            <input type="time" required><br><br>
+            <a href="homepage.html"><input type="button" value="Sign-up"></a>
+            <input type="reset" value="Reset">
+        </div>
+    </form>
 </body>
 </html>
