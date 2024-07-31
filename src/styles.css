@@ -1,0 +1,20 @@
+body{
+    background-color: #101820;
+    color:#FEE715;
+    font-family: "Ubuntu", sans-serif;
+}
+
+#heading-name{
+    font-family: 'Playwrite AR', sans-serif;
+}
+
+header{
+    position: fixed;
+}
+
+#top {
+    width: 100px; 
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
