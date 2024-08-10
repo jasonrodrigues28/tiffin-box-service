@@ -4,12 +4,47 @@ body{
     font-family: "Ubuntu", sans-serif;
 }
 
-#heading-name{
+#heading_name{
     font-family: 'Playwrite AR', sans-serif;
+    position: fixed;
+    width: 100%; /* Ensure the header spans the full width of the page */
+    top: 0;
+    left: 0;
+    background-color: #101820; /* Match background color to body */
+    padding: 10px 0; /* Add some padding to the header */
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-between; /* Space between logo/title and nav */
+    align-items: center; /* Vertically center align items */
+    padding-left: 60px; /* Adjust padding to match the logo */
 }
 
-header{
-    position: fixed;
+#heading_name section {
+    display: flex; /* Align logo and title horizontally */
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullets */
+    margin: 0;
+    padding-top: 3%;
+}
+
+nav ul li {
+    display: inline; /* Display list items in a line */
+    margin-right: 15px; /* Space between the items */
+    padding-top: 0%;
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #FEE715; /* Text color of links */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#web_name{
+position: relative; /* Change to relative for simpler positioning */
+    padding-left: 60px; /* Adjust padding as needed */
+    margin: 0; /* Ensure no additional margin */
 }
 
 #top {
