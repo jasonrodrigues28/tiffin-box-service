@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Tiffin Box Assistant | Sign In</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         h1 {
             color: darkblue;
@@ -10,22 +11,27 @@
     </style>
 </head>
 <body>
-        <div style="text-align:center">
-            <img src="user.jpg" alt="User" style="width:200px;height:200px;"><br><br>
-            <label for="sign-in" style="font-size:30px;">
-                <b>Sign In</b>
-            </label><br><br>
-                <input type="text" placeholder="Username" required><br><br>
-                <input type="password" placeholder="Password" required><br><br>
-                <label for="">Role:</label>
-            <select required>
+    <div class="center-container">
+        <img src="user.jpg" alt="User" style="width:200px;height:200px;"><br><br>
+        
+        <label for="sign-in" style="font-size:30px;">
+            <b>Sign In</b>
+        </label><br><br>
+
+        <form action="login.php" method="post"> <!-- Placeholder action -->
+            <input type="text" placeholder="Username" required><br><br>
+            <input type="password" placeholder="Password" required><br><br>
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
                 <option value="User">User</option>
                 <option value="Cook">Cook</option>
                 <option value="Admin">Admin</option>
             </select><br><br>
-            <a href="homepage.html"><input type="submit" value="Sign In" ></a>
-            <div><br><br>
-            <a href="sign-up.html">Create new Account</a>
-        </div>
+            <input type="submit" value="Sign In">
+        </form>
+        
+        <br><br>
+        <a href="sign-up.html">Create new Account</a>
+    </div>
 </body>
 </html>

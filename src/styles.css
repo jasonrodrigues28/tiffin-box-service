@@ -1,42 +1,94 @@
-/* General styling */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
     margin: 0;
     padding: 0;
 }
 
-/* Header styling */
 header {
-    background-color: #f8f9fa;
-    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
     text-align: center;
 }
 
-header nav ul {
-    list-style: none;
+nav ul {
+    list-style-type: none;
     padding: 0;
 }
 
-header nav ul li {
+nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin: 0 15px;
 }
 
-/* Table styling */
-table {
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+section {
+    padding: 20px;
+}
+
+/* Form Styles */
+form {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    width: 300px;
+    border-radius: 10px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="file"],
+form input[type="date"],
+form input[type="datetime-local"],
+form input[type="url"],
+form input[type="number"],
+form select,
+form textarea {
     width: 100%;
-    border-collapse: collapse;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-table th, table td {
+form input[type="submit"],
+form input[type="button"],
+form input[type="reset"] {
+    background-color: #4CAF50;
+    color: white;
     padding: 10px;
-    text-align: left;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
 }
 
-/* Footer styling */
-footer {
-    background-color: #f8f9fa;
-    padding: 10px;
+form input[type="submit"]:hover,
+form input[type="button"]:hover,
+form input[type="reset"]:hover {
+    background-color: #45a049;
+}
+
+/* Sign-In and Sign-Up Page */
+.center-container {
     text-align: center;
-    margin-top: 20px;
+    padding: 50px 0;
+}
+
+img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
 }
