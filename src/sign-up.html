@@ -9,6 +9,103 @@
             font-size: 36px;
         }
     </style>
+	
+	<script>
+		function f1() 
+        {
+            // Validating first and last name
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            if (fname === "") {
+                alert("First name cannot be empty");
+                return false;
+            }
+            if (lname === "") {
+                alert("Last name cannot be empty");
+                return false;
+            }
+
+            // Validating the drop-down menu
+            var role = document.getElementById("role").value;
+            if (role === "") {
+                alert("Please select your role");
+                return false;
+            }
+
+            // Validating radio buttons for Year
+            var yearElements = document.getElementsByName("mealType");
+            var yearSelected = false;
+            for (var i = 0; i < yearElements.length; i++) {
+                if (yearElements[i].checked) {
+                    yearSelected = true;
+                    break;
+                }
+            }
+            if (!yearSelected) {
+                alert("Please select your Year");
+                return false;
+            }
+
+            // Validating username (e.g., COMP followed by 2 digits)
+            var uname = document.getElementById("username").value;
+            var unamePattern = /^[a-zA-Z]{5}[0-9]{2}$/;
+            if (!unamePattern.test(uname)) {
+                alert("Invalid username");
+                return false;
+            }
+
+            // Validating password
+            var password = document.getElementById("password").value;
+            if (password.length < 6 || password.length > 10) {
+                alert("Password size should be between 6 to 10 characters");
+                return false;
+            }
+            if (!/[a-z]/.test(password)) {
+                alert("Password must contain at least one lowercase character");
+                return false;
+            }
+            if (!/[A-Z]/.test(password)) {
+                alert("Password must contain at least one uppercase character");
+                return false;
+            }
+            if (!/[0-9]/.test(password)) {
+                alert("Password must contain at least one digit");
+                return false;
+            }
+            if (!/[\@\#\$\%\&\;\:\.\,]/.test(password)) {
+                alert("Password must contain at least one special character");
+                return false;
+            }
+
+            // Validating phone number
+            var phone = document.getElementById("pn").value;
+            var phonePattern = /^[789][0-9]{9}$/;
+            if (!phonePattern.test(phone)) {
+                alert("Invalid phone number. Must be 10 digits starting with 7, 8, or 9");
+                return false;
+            }
+
+            // Validating email
+            var email = document.getElementById("email").value;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            // Display the entered data if all validations are successful
+            var successMessage = "Form submitted successfully!" +
+                  "<br>First Name: " + fname + 
+                  "<br>Last Name: " + lname + 
+                  "<br>Username: " + uname + 
+                  "<br>Phone: " + phone + 
+                  "<br>Email: " + email;
+            
+            document.getElementById("pop_messg").innerHTML = successMessage;
+            return true;
+        }
+
+	</script>
 </head>
 <body>
     <div class="center-container">
@@ -39,12 +136,6 @@
             <input type="checkbox" name="mealType" value="Lunch">Lunch<br>
             <input type="checkbox" name="mealType" value="Dinner">Dinner<br><br>
 
-            <label for="delivery">Preferred Delivery Date & Time:</label>
-            <input type="datetime-local" id="delivery" name="delivery" required><br><br>
-
-            <label for="meals">Number of Meals you wish to order:</label>
-            <input type="number" id="meals" name="meals" min="1" required><br><br>
-
             <label for="photo">Profile Photo:</label>
             <input type="file" id="photo" name="photo" required><br><br>
 
@@ -71,21 +162,13 @@
             <label for="color">Favourite color for tiffin box:</label>
             <input type="color" id="color" name="color" required><br><br>
 
-            <label for="socialUrl">Url of Social Media Profile:</label>
-            <input type="url" id="socialUrl" name="socialUrl" required><br><br>
-
             <label for="rating">Rate our website design (1-10):</label>
             <input type="range" id="rating" name="rating" min="1" max="10" required><br><br>
 
-            <label for="searchMeal">Search for Meal Options:</label>
-            <input type="search" id="searchMeal" name="searchMeal"><br><br>
-
-            <label for="preferredTime">Preferred Delivery Time:</label>
-            <input type="time" id="preferredTime" name="preferredTime" required><br><br>
-
-            <input type="submit" value="Sign-up">
+            <input type="submit" value="Sign-up" onclick="f1()">
             <input type="reset" value="Reset">
         </form>
+        <div id="pop_messg"></div>
     </div>
 </body>
 </html>
