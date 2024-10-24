@@ -18,18 +18,15 @@
             var lname = document.getElementById("lname").value;
             if (fname === "") {
                 alert("First name cannot be empty");
-                return false;
             }
             if (lname === "") {
                 alert("Last name cannot be empty");
-                return false;
             }
 
             // Validating the drop-down menu
             var role = document.getElementById("role").value;
             if (role === "") {
                 alert("Please select your role");
-                return false;
             }
 
             // Validating radio buttons for Year
@@ -41,9 +38,9 @@
                     break;
                 }
             }
+
             if (!yearSelected) {
                 alert("Please select your Year");
-                return false;
             }
 
             // Validating username (e.g., COMP followed by 2 digits)
@@ -51,30 +48,28 @@
             var unamePattern = /^[a-zA-Z]{5}[0-9]{2}$/;
             if (!unamePattern.test(uname)) {
                 alert("Invalid username");
-                return false;
             }
 
             // Validating password
             var password = document.getElementById("password").value;
             if (password.length < 6 || password.length > 10) {
                 alert("Password size should be between 6 to 10 characters");
-                return false;
             }
+
             if (!/[a-z]/.test(password)) {
                 alert("Password must contain at least one lowercase character");
-                return false;
             }
+
             if (!/[A-Z]/.test(password)) {
                 alert("Password must contain at least one uppercase character");
-                return false;
             }
+
             if (!/[0-9]/.test(password)) {
                 alert("Password must contain at least one digit");
-                return false;
             }
+
             if (!/[\@\#\$\%\&\;\:\.\,]/.test(password)) {
                 alert("Password must contain at least one special character");
-                return false;
             }
 
             // Validating phone number
@@ -82,7 +77,6 @@
             var phonePattern = /^[789][0-9]{9}$/;
             if (!phonePattern.test(phone)) {
                 alert("Invalid phone number. Must be 10 digits starting with 7, 8, or 9");
-                return false;
             }
 
             // Validating email
@@ -90,7 +84,6 @@
             var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (!emailPattern.test(email)) {
                 alert("Invalid email address");
-                return false;
             }
 
             // Display the entered data if all validations are successful
@@ -103,6 +96,9 @@
             
             document.getElementById("pop_messg").innerHTML = successMessage;
             return true;
+
+            // Redirect to home page
+            window.location.href = "homepage.html"; // Change to your home page file
         }
 
 	</script>
@@ -159,13 +155,7 @@
                 <option value="Cook">Cook</option>
             </select><br><br>
 
-            <label for="color">Favourite color for tiffin box:</label>
-            <input type="color" id="color" name="color" required><br><br>
-
-            <label for="rating">Rate our website design (1-10):</label>
-            <input type="range" id="rating" name="rating" min="1" max="10" required><br><br>
-
-            <input type="submit" value="Sign-up" onclick="f1()">
+            <input type="submit" value="Sign-up" onsubmit="f1()">
             <input type="reset" value="Reset">
         </form>
         <div id="pop_messg"></div>
