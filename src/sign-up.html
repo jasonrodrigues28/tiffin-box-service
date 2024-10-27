@@ -109,7 +109,7 @@
 
         <label for="" style="font-size:30px;"><b>Sign-Up</b></label><br><br>
 
-        <form action="register.php" method="post"> <!-- Placeholder action -->
+        <form action="register.php" method="post" onsubmit="f1()"> <!-- Placeholder action -->
             <label for="fname">First Name:</label>
             <input type="text" id="fname" name="fname" required><br><br>
 
@@ -155,7 +155,7 @@
                 <option value="Cook">Cook</option>
             </select><br><br>
 
-            <input type="submit" value="Sign-up" onsubmit="f1()">
+            <input type="submit" value="Sign-up">
             <input type="reset" value="Reset">
         </form>
         <div id="pop_messg"></div>
