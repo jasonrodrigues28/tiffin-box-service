@@ -8,7 +8,7 @@ if($conn)
 else
 {
     echo "connection failed";
-    mysqli_close($conn);
+    exit();
 }
 
 $query1 = "CREATE DATABASE WTproject";
@@ -22,5 +22,5 @@ else
 {
     echo "<br>WTproject creation FAILED!";
 }
-my_sqli_close($conn);
+mysqli_close($conn);
 ?>
