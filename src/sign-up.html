@@ -124,7 +124,7 @@
 
         <label for="" style="font-size:30px;"><b>Sign-Up</b></label><br><br>
 
-        <form action="register.php" method="post" enctype="multipart/form-data" onsubmit="return f1()"> <!-- Placeholder action -->
+        <form action="register.php" method="post" enctype="multipart/form-data" >   <!-- onsubmit="return f1()"  Placeholder action -->
             <label for="fname">First Name:</label>
             <input type="text" id="fname" name="fname" required><br><br>
 
@@ -143,9 +143,9 @@
             <input type="date" id="dob" name="dob" required><br><br>
 
             <label for="mealType">Probable meal type:</label><br>
-            <input type="checkbox" name="mealType" value="Breakfast">Breakfast<br>
-            <input type="checkbox" name="mealType" value="Lunch">Lunch<br>
-            <input type="checkbox" name="mealType" value="Dinner">Dinner<br><br>
+            <input type="checkbox" name="mealType[]" value="Breakfast">Breakfast<br>
+            <input type="checkbox" name="mealType[]" value="Lunch">Lunch<br>
+            <input type="checkbox" name="mealType[]" value="Dinner">Dinner<br><br>
 
             <label for="photo">Profile Photo:</label>
             <input type="file" id="photo" name="photo" required><br><br>

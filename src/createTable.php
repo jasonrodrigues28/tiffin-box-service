@@ -20,10 +20,12 @@ $query1 = "CREATE TABLE register (
     gender VARCHAR(10) NOT NULL,
     dob DATE NOT NULL,
     mealType VARCHAR(50),
-    profilePhoto BLOB,
+    email VARCHAR(30) NOT NULL,
+    userName VARCHAR(30) NOT NULL,
+    userPassword varchar(30) NOT NULL,
+    U_role varchar(10) NOT NULL,
     PRIMARY KEY(U_id)
     )";
-
 
 $checktable = mysqli_query($conn,$query1);
 
