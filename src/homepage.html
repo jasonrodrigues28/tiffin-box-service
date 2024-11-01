@@ -23,7 +23,47 @@
             font-size: 14px;
             color: grey;
         }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
     </style>
+    <script>
+        function f2() {
+            // Get all radio buttons for delivery time
+            const deliveryOptions = document.getElementsByName('deliveryTime');
+            let isDeliveryTimeSelected = false;
+
+            // Check if any delivery time is selected
+            for (let i = 0; i < deliveryOptions.length; i++) {
+                if (deliveryOptions[i].checked) {
+                    isDeliveryTimeSelected = true;
+                    break;
+                }
+            }
+
+            // If no delivery time is selected, alert the user
+            if (!isDeliveryTimeSelected) {
+                alert("Please select a preferred delivery time.");
+                return false; // Prevent form submission
+            }
+
+             // Validate phone number
+             const phoneNumber = document.getElementById('pn').value;
+            const phonePattern = /^\d{10}$/; // Adjust the pattern based on your needs
+
+            if (!phonePattern.test(phoneNumber)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false; // Prevent form submission
+            }
+
+            // If all checks are passed, allow form submission
+            return true;
+        }
+    </script>
 </head>
 <body>
     <!-- Header | use IDs to jump in the page -->
@@ -96,21 +136,41 @@
     <!-- Subscription Form -->
     <section id="subscribe">
         <h2>Subscribe Now</h2>
-        <form action="subscribe.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="plan">Select Plan:</label>
-            <select id="plan" name="plan" required>
-                <option value="basic">Basic Plan</option>
-                <option value="premium">Premium Plan</option>
-                <option value="family">Family Plan</option>
+        <form action="insertHome.php" method="post" onsubmit="return f2()">
+            <label for="fn">First Name:</label>
+            <input type="text" id="fn" name="fn" required>
+
+            <label for="ln">Last Name:</label>
+            <input type="text" id="ln" name="ln" required>
+
+            <label for="pn">Contact Number:</label><br>
+            <input type="tel" id="pn" name="pn" required><br>
+
+            <!-- Meal Preferences -->
+            <label for="mealType">Meal Type:</label>
+            <select id="mealType" name="mealType" required>
+                <option value="">--</option>
+                <option value="veg">Veg</option>
+                <option value="nonVeg">Non-Veg</option>
+                <option value="vegan">Vegan</option>
             </select>
-            
-            <input type="submit" value="Subscribe">
+
+            <label for="dietaryRestrictions">Dietary Restrictions:</label>
+            <input type="text" id="dietaryRestrictions" name="dietaryRestrictions" placeholder="e.g., Gluten-Free, No Sugar" required>
+
+            <!-- Delivery Time Preferences -->
+            <label for="deliveryTime">Preferred Delivery Time:</label><br>
+            <input type="radio" name="deliveryTime" value="morning">Morning</input><br>
+            <input type="radio" name="deliveryTime" value="afternoon">Afternoon</input><br>
+            <input type="radio" name="deliveryTime" value="evening">Evening</input><br>
+
+            <!-- Special Instructions -->
+            <label for="specialInstructions">Any Notes for the Chef?</label>
+            <textarea id="specialInstructions" name="specialInstructions" rows="4" placeholder="Enter any special instructions..." required></textarea>
+
+            <!-- Submit Order Button -->
+            <input type="submit" value="Place Order"><br><br>
+            <input type="reset" value="Clear Form"><br><br>
         </form>
     </section>
     
