@@ -24,6 +24,7 @@ $query1 = "CREATE TABLE register (
     userName VARCHAR(30) NOT NULL,
     userPassword varchar(30) NOT NULL,
     U_role varchar(10) NOT NULL,
+    profilePhoto VARCHAR(255) NOT NULL,
     PRIMARY KEY(U_id)
     )";
 
