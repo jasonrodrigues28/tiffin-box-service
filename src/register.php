@@ -34,18 +34,27 @@ $targetFilePath = $targetDir . $fileName;
 // Move the uploaded file to the server directory
 move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
 
-// Directly prepare the SQL statement
-$q1 = "INSERT INTO register (firstName, lastName, U_address, gender, dob, mealType, email, username, userPassword, U_role, profilePhoto) 
-        VALUES ('$firstName', '$lastName', '$address', '$gender', '$dob', '$meal', '$email', '$username', '$userPassword', '$U_role', '$targetFilePath')";
-
-// Execute the query
-if (mysqli_query($conn, $q1)) {
-    header("Location: homepage.html");
-    exit();
+//
+if ($U_role == "Customer") {
+    $table = "c_account";
 } else {
-    echo "<br>Data insertion failed: " . mysqli_error($conn);
+    $table = "a_account";
 }
 
-// Close the connection
+
+//Insertion
+$q3 = "INSERT INTO $table (role,firstName, lastName, U_address, gender, dob, mealType, email, username, userPassword, U_role, profilePhoto) 
+        VALUES ('$U_role','$firstName', '$lastName', '$address', '$gender', '$dob', '$meal', '$email', '$username', '$userPassword', '$U_role', '$targetFilePath')";
+$r3 = mysqli_query($conn,$q3);
+
+
+if ($U_role === "Customer") {
+    header("Location: homepage.php");
+    exit();
+} elseif ($U_role === "Admin") {
+    header("Location: admin_homepage.php");
+    exit();
+}
+
 mysqli_close($conn);
 ?>

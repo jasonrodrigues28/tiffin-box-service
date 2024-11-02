@@ -28,7 +28,7 @@ $r1 = mysqli_query($conn, $q1);
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Plan</title>
-    <link src="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         h1 {
             color: darkblue;
@@ -46,10 +46,38 @@ $r1 = mysqli_query($conn, $q1);
             padding: 15px;
             text-align: center;
         }
+        /* Set html and body to 100% height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Flex container for the entire page */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content flex */
+        .content {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
-    <div >
+    <header>
+        <h1>Admin Dashboard - Tiffin Box Service</h1>
+        <nav>
+            <ul>
+                <li><a href="admin_homepage.php">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
         <h2>Remove Plan</h2><br>
         
         <table border="1">
@@ -81,6 +109,9 @@ $r1 = mysqli_query($conn, $q1);
             </tbody>
         </table>
     </div>
+    <footer>
+        <p>Admin Contact: admin@tiffinboxservice.com</p>
+    </footer>
 </body>
 </html>
 

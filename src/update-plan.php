@@ -39,7 +39,7 @@ if (isset($_POST['update'])) {
 }
 
 // Fetch meal plans
-$q1 = "SELECT  * FROM MealPlan";
+$q1 = "SELECT * FROM MealPlan";
 $r1 = mysqli_query($conn, $q1);
 ?>
 <!DOCTYPE html>
@@ -49,6 +49,46 @@ $r1 = mysqli_query($conn, $q1);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Meal Plan - Tiffin Box Service</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Set html and body to 100% height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Flex container for the entire page */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content flex */
+        .content {
+            flex: 1;
+        }
+
+        /* Header and footer styling */
+        h1 {
+            color: darkblue;
+            font-size: 36px;
+        }
+
+        h2 {
+            color: #2F4F4F;
+            font-size: 28px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
     <script>
         function f1() {
             var isValid = true;
@@ -76,32 +116,51 @@ $r1 = mysqli_query($conn, $q1);
     </script>
 </head>
 <body>
-    <h1>Edit Meal Plan</h1>
-    <div id="edit">
-        <form method="POST" action="" onsubmit="return f1()">
-            <label>Select Plan to Update:</label>
-            <select id="MP_id" name="MP_id" required>
-                <option value="">Select a plan</option>
-                <?php
-                    while ($row = mysqli_fetch_assoc($r1)) {
-                        echo "<option value='" . $row['MP_id'] . "'>" . $row['PlanName']  . "</option>";
-                    }
-                ?>
-            </select><br>
+    <div class="container">
+        <header>
+            <h1>Admin Dashboard - Tiffin Box Service</h1>
+            <nav>
+                <ul>
+                    <li><a href="admin_homepage.php">Home</a></li>
+                </ul>
+            </nav>
+        </header>
 
-            <label>What do you want to update?</label>
-            <select id="change" name="change" required>
-                <option value="">Select an option</option>
-                <option value="1">Plan Name</option>
-                <option value="2">Plan Description</option>
-                <option value="3">Price</option>
-            </select><br>
+        <!-- Main content -->
+        <div class="content">
+            <h1>Edit Meal Plan</h1>
+            <div id="edit">
+                <form method="POST" action="" onsubmit="return f1()">
+                    <label>Select Plan to Update:</label>
+                    <select id="MP_id" name="MP_id" required>
+                        <option value="">Select a plan</option>
+                        <?php
+                            while ($row = mysqli_fetch_assoc($r1)) {
+                                echo "<option value='" . $row['MP_id'] . "'>" . $row['PlanName']  . "</option>";
+                            }
+                        ?>
+                    </select><br>
 
-            <label>New Value:</label><br>
-            <input type="text" id="new_value" name="new_value" placeholder="Enter new value" required><br>
+                    <label>What do you want to update?</label>
+                    <select id="change" name="change" required>
+                        <option value="">Select an option</option>
+                        <option value="1">Plan Name</option>
+                        <option value="2">Plan Description</option>
+                        <option value="3">Price</option>
+                    </select><br>
 
-            <button type="submit" name="update" class="submit-button">Submit</button>
-        </form>
+                    <label>New Value:</label><br>
+                    <input type="text" id="new_value" name="new_value" placeholder="Enter new value" required><br>
+
+                    <button type="submit" name="update" class="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Admin Contact: admin@tiffinboxservice.com</p>
+        </footer>
     </div>
 </body>
 </html>

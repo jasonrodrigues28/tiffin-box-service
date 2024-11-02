@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscribers List - Tiffin Box Service</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,9 +28,44 @@
             background-color: #4CAF50;
             color: white;
         }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        /* Set html and body to 100% height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Flex container for the entire page */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content flex */
+        .content {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Admin Dashboard - Tiffin Box Service</h1>
+        <nav>
+            <ul>
+                <li><a href="admin_homepage.php">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
     <h1>Subscribers List</h1>
     <table>
         <thead>
@@ -75,5 +111,9 @@
             ?>
         </tbody>
     </table>
+    </div>
+    <footer>
+        <p>Admin Contact: admin@tiffinboxservice.com</p>
+    </footer>
 </body>
 </html>

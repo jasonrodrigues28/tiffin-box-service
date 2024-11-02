@@ -9,6 +9,47 @@
             font-size: 36px;
         }
     </style>
+    <script>
+        function f1() 
+		{
+            var isValid = true;
+            var messages = [];
+			var role = document.getElementById("role").value;
+			if (role === "") {
+				alert("Please select a role");
+				isValid=false;
+			}
+
+			var userName = document.getElementById("un").value;
+			if (userName === "") {
+				alert("Please enter username");
+				isValid=false;
+			}
+
+			var password = document.getElementById("pw").value;
+			if (password.trim().length < 6 || password.trim().length > 10) {
+				alert("Password size should be between 6 to 10 characters");
+				isValid=false;
+			} else if (password.search(/[a-z]/) === -1) {
+				alert("Password must contain at least one lowercase character");
+				isValid=false;
+			} else if (password.search(/[A-Z]/) === -1) {
+				alert("Password must contain at least one uppercase character");
+				isValid=false;
+			} else if (password.search(/[0-9]/) === -1) {
+				alert("Password must contain at least one digit");
+				isValid=false;
+			} else if (password.search(/[\@\#\$\%\&\;\:\.\,]/) === -1) {
+				alert("Password must contain at least one special character");
+				isValid=false;
+			}
+            if(!isValid){
+                alert(messages.join("\n"));
+            }
+
+            return isValid;
+		}
+    </script>
 </head>
 <body>
     <div class="center-container">
@@ -18,16 +59,16 @@
             <b>Sign In</b>
         </label><br><br>
 
-        <form action="login.php" method="post"> <!-- Placeholder action -->
-            <input type="text" placeholder="Username" required><br><br>
-            <input type="password" placeholder="Password" required><br><br>
+        <form action="sign_in.php" method="POST" onsubmit="return f1()"> <!-- Placeholder action -->
+            <input type="text" placeholder="Username" id="un" name="un" required><br><br>
+            <input type="password" id="pw" name="pw" placeholder="Password" required><br><br>
             <label for="role">Role:</label>
             <select id="role" name="role" required>
-                <option value="User">User</option>
-                <option value="Cook">Cook</option>
+                <option value="">Select your role</option>
+                <option value="Customer">Customer</option>
                 <option value="Admin">Admin</option>
             </select><br><br>
-            <input type="submit" value="Sign In">
+            <input type="submit" value="Sign In"><br>
         </form>
         
         <br><br>
