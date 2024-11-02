@@ -19,7 +19,6 @@ $query2 = "CREATE TABLE subscriptions (
             contactNumber VARCHAR(15) NOT NULL,
             mealType VARCHAR(50),
             dietaryRestrictions VARCHAR(100),
-            deliveryTime VARCHAR(10) NOT NULL,
             specialInstructions TEXT,
             PRIMARY KEY(id)
         )";

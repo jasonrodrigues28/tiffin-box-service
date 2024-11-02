@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Meal Plan - Tiffin Box Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        h1 {
+            color: darkblue;
+            font-size: 36px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px; /* Increased padding */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function f1()
+        {
+            var isValid = true;
+            var messages = [];
+
+            // Validating first and last name
+            var pname = document.getElementById("planName").value;
+            var pdesc = document.getElementById("planDescription").value;
+
+            if (pname === "") {
+                messages.push("plan name cannot be empty");
+                isValid = false;
+            }
+            if (plandesc === "") {
+                messages.push("plan description cannot be empty");
+                isValid = false;
+            }
+
+            var price = document.getElementById("price").value;
+            var pricePattern = /^Rs.[0-9]{4}\/month$/;
+            if (!pricePattern.test(price)) {
+                messages.push("Invalid price (Ex. Rs.500/month)");
+                isValid = false;
+            }
+
+            if(!isValid){
+                alert(messages.join("\n"));
+            }
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Meal Plan</h1>
+    <form action="addmeal.php" method="POST" onsubmit="return f1()" >
+        <label for="planName">Plan Name</label>
+        <input type="text" id="planName" name="planName" required>
+
+        <label for="planDescription">Plan Description</label>
+        <input type="text" id="planDescription" name="planDescription" required>
+
+        <label for="price">Price (in RS.)</label>
+        <input type="text" id="price" name="price" placeholder="Ex. Rs.500/month" required>
+
+        <button type="submit" class="submit-button">Add Meal Plan</button>
+    </form>
+</body>
+</html>

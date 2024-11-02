@@ -91,7 +91,11 @@
                 messages.push("Invalid email address");
                 isValid = false;
             }
-
+            var address = document.getElementById("address").value;
+            if (address === "") {
+                messages.push("Address cannot be empty");
+                isValid = false;
+            }
             //show the erros at once all together
             if(!isValid){
                 alert(messages.join("\n"));

@@ -10,20 +10,18 @@ if (!$conn) {
 
 // Check if form is submitted
 // Collect and sanitize form data
-$firstName = $_POST['fn'];
-$lastName = $_POST['ln'];
-$contactNumber = $_POST['pn'];
-$mealType = $_POST['mealType'];
-$dietaryRestrictions = $_POST['dietaryRestrictions'];
-$specialInstructions = $_POST['specialInstructions'];
+$pname = $_POST['planName'];
+$description = $_POST['planDescription'];
+$price = $_POST['price'];
+
 
 // Prepare the SQL query to insert data into the subscriptions table
-$query = "INSERT INTO subscriptions (firstName, lastName, contactNumber, mealType, dietaryRestrictions, specialInstructions) 
-        VALUES ('$firstName', '$lastName', '$contactNumber', '$mealType', '$dietaryRestrictions','$specialInstructions')";
+$query = "INSERT INTO MealPlan (PlanName, PlanDescription, PlanPrice) 
+        VALUES ('$pname', '$description', '$price')";
 
 // Execute the query
 if (mysqli_query($conn, $query)) {
-    header("Location: homepage.php");
+    header("Location: admin_homepage.php");
     exit();
 } else {
     echo "<br>Data insertion failed: " . mysqli_error($conn);

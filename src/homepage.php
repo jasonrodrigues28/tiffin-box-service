@@ -30,51 +30,86 @@
             padding: 15px;
             text-align: center;
         }
+        #subscribe form input[type="text"],
+        #subscribe form input[type="tel"],
+        #subscribe form select,
+        #subscribe form textarea {
+
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%; /* Ensures that fields take the full width within the container */
+            box-sizing: border-box; /* Includes padding in the total width */
+        }
     </style>
     <script>
-        function f2() {
-            // Get all radio buttons for delivery time
-            const deliveryOptions = document.getElementsByName('deliveryTime');
-            let isDeliveryTimeSelected = false;
+        function f1()
+        {
+            var isValid = true;
+            var messages = [];
 
-            // Check if any delivery time is selected
-            for (let i = 0; i < deliveryOptions.length; i++) {
-                if (deliveryOptions[i].checked) {
-                    isDeliveryTimeSelected = true;
-                    break;
-                }
+            // Validating first and last name
+            var fname = document.getElementById("fn").value;
+            var lname = document.getElementById("ln").value;
+
+            if (fname === "") {
+                messages.push("First name cannot be empty");
+                isValid = false;
+            }
+            if (lname === "") {
+                messages.push("Last name cannot be empty");
+                isValid = false;
             }
 
-            // If no delivery time is selected, alert the user
-            if (!isDeliveryTimeSelected) {
-                alert("Please select a preferred delivery time.");
-                return false; // Prevent form submission
+            var pn=document.getElementById("pn").value;
+            var x=/^[789]{1}[0-9]{9}$/;
+            
+            if(x.test(pn)==false)
+            {
+                messages.push("Invalid Phone number");
+                isValid = false;
             }
 
-             // Validate phone number
-             const phoneNumber = document.getElementById('pn').value;
-            const phonePattern = /^\d{10}$/; // Adjust the pattern based on your needs
-
-            if (!phonePattern.test(phoneNumber)) {
-                alert("Please enter a valid 10-digit phone number.");
-                return false; // Prevent form submission
+            var mealType=document.getElementById("mealType");
+            var y=mealType.options[mealType.selectedIndex].value;
+            if(y=="")
+            {
+                messages.push("Please select your meal type");
+                isValid = false;
             }
 
-            // If all checks are passed, allow form submission
-            return true;
+
+
+            var dRestrictions = document.getElementById("dietaryRestrictions").value;
+            if (dRestrictions === "") {
+                messages.push("Dietary Restrcitions cannot be empty");
+                isValid = false;
+            }
+
+            var spIns = document.getElementById("specialInstructions").value;
+            if (spIns === "") {
+                messages.push("Special Instructions cannot be empty");
+                isValid = false;
+            }
+            //show the erros at once all together
+            if(!isValid){
+                alert(messages.join("\n"));
+            }
+
+            return isValid;
         }
+            
     </script>
 </head>
 <body>
     <!-- Header | use IDs to jump in the page -->
     <header>
-        <a href="homepage.html">
+        <a href="homepage.php">
             <img src="../pics/logo.png" alt="Tiffin Box Service Logo" style="width: 50px;">
         </a>        
         <h1>Tiffin Box Service</h1>
         <nav>
             <ul>
-                <li><a href="homepage.html">Home</a></li>
+                <li><a href="homepage.php">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#plans">Plans</a></li>
                 <li><a href="#Contact">Contact</a></li>
@@ -110,33 +145,50 @@
     <section id="plans">
         <h2>Our Plans</h2>
         <table border="1">
-            <tr>
-                <th>Plan Name</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>Basic Plan</td>
-                <td>Simple and healthy meals for everyday needs.</td>
-                <td>RS.100/month</td>
-            </tr>
-            <tr>
-                <td>Premium Plan</td>
-                <td>Includes gourmet meals and special dietary options.</td>
-                <td>RS.200/month</td>
-            </tr>
-            <tr>
-                <td>Family Plan</td>
-                <td>Perfect for families, with meals for up to 4 members.</td>
-                <td>RS.300/month</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Plan Id</th>
+                    <th>Plan Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+            $conn = mysqli_connect("localhost", "root", "", "WTproject");
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: ");
+                }
+
+                // Fetching subscriber data
+                $sql = "SELECT MP_id,PlanName,PlanDescription,PlanPrice FROM MealPlan";
+                $result = mysqli_query($conn,$sql);
+
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["MP_id"] . "</td>";
+                        echo "<td>" . $row["PlanName"] . "</td>";
+                        echo "<td>" . $row["PlanDescription"] . "</td>";
+                        echo "<td>" . $row["PlanPrice"] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4'>No Plans found</td></tr>";
+                }
+                // Close the connection
+                mysqli_close($conn);
+                ?>
+            </tbody>
         </table>
     </section>
     
     <!-- Subscription Form -->
     <section id="subscribe">
         <h2>Subscribe Now</h2>
-        <form action="insertHome.php" method="post" onsubmit="return f2()">
+        <form action="insertHome.php" method="post" onsubmit="return f1()">
             <label for="fn">First Name:</label>
             <input type="text" id="fn" name="fn" required>
 
@@ -158,12 +210,6 @@
             <label for="dietaryRestrictions">Dietary Restrictions:</label>
             <input type="text" id="dietaryRestrictions" name="dietaryRestrictions" placeholder="e.g., Gluten-Free, No Sugar" required>
 
-            <!-- Delivery Time Preferences -->
-            <label for="deliveryTime">Preferred Delivery Time:</label><br>
-            <input type="radio" name="deliveryTime" value="morning">Morning</input><br>
-            <input type="radio" name="deliveryTime" value="afternoon">Afternoon</input><br>
-            <input type="radio" name="deliveryTime" value="evening">Evening</input><br>
-
             <!-- Special Instructions -->
             <label for="specialInstructions">Any Notes for the Chef?</label>
             <textarea id="specialInstructions" name="specialInstructions" rows="4" placeholder="Enter any special instructions..." required></textarea>
@@ -183,39 +229,15 @@
         </ol>
     </section>
 
-    <table border="1">
-        <tr>
-            <th colspan="3">Meal Plans</th>
-        </tr>
-        <tr>
-            <th>Plan Name</th>
-            <th>Description</th>
-            <th>Price</th>
-        </tr>
-        <tr>
-            <td rowspan="2">Basic Plan</td>
-            <td>Simple meals</td>
-            <td>RS.100/month</td>
-        </tr>
-        <tr>
-            <td>Healthy options</td>
-            <td>RS.120/month</td>
-        </tr>
-        <tr>
-            <td>Premium Plan</td>
-            <td colspan="2">Gourmet meals and dietary options</td>
-        </tr>
-    </table>    
-
     <section id="features">
         <h2>Key Features</h2>
         <dl>
             <dt>Fresh Ingredients</dt>
-            <dd>We use only the freshest ingredients in our meals.</dd>
+            <dd>-We use only the freshest ingredients in our meals.</dd>
             <dt>Convenient Delivery</dt>
-            <dd>Meals delivered right to your door.</dd>
+            <dd>-Meals delivered right to your door.</dd>
             <dt>Affordable Prices</dt>
-            <dd>Enjoy quality meals without breaking the bank.</dd>
+            <dd>-Enjoy quality meals without breaking the bank.</dd>
         </dl>
     </section>
     
