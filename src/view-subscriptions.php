@@ -111,6 +111,7 @@
             ?>
         </tbody>
     </table>
+    <button class="admin-button" onclick="location.href='filter-subscribers.php'">Filter Subscribers</button><br>
     </div>
     <footer>
         <p>Admin Contact: admin@tiffinboxservice.com</p>

@@ -113,7 +113,10 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#plans">Plans</a></li>
                 <li><a href="#Contact">Contact</a></li>
+                <li><a href="my_account.php">My Account</a></li>
                 <li><a href="sign-in.html">Sign In</a></li>
+                <li><a href="sign-in.html">Log-Out</a></li>
+
             </ul>
         </nav>
     </header>

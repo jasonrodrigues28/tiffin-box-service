@@ -48,6 +48,7 @@
         <nav>
             <ul>
                 <li><a href="admin_homepage.php">Home</a></li>
+                <li><a href="sign-in.html">Log-Out</a></li>
             </ul>
         </nav>
     </header>
