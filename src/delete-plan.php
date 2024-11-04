@@ -99,7 +99,7 @@ $r1 = mysqli_query($conn, $q1);
                             <td>" . $row['PlanName'] . "</td>
                             <td>" . $row['PlanDescription'] . "</td>
                             <td>" . $row['PlanPrice'] . "</td>
-                            <td><a href='?delete_id=" . $row['MP_id'] . "' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a></td>
+                            <td><a href='?delete_id=" . $row['MP_id'] . "' onclick='return confirm(\"Are you sure you want to delete this plan?\");'>Delete</a></td>
                         </tr>";
                     }
                 } else {
