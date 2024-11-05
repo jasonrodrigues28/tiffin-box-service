@@ -8,7 +8,6 @@
    
     if ($role == "Customer")
     {
-        
         $table = "c_account";
     } 
     else
